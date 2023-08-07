@@ -6,12 +6,10 @@ import lombok.ToString;
 @Getter
 @ToString
 public class ProductImpl implements Product {
-    private String id;
     private String name;
     private int price;
 
-    public ProductImpl(String id, String name, int price) {
-        this.id = id;
+    public ProductImpl(String name, int price) {
         this.name = name;
         this.price = price;
     }
