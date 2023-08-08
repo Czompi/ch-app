@@ -1,4 +1,4 @@
-package hu.czompi.ch_app.inventory;
+package hu.czompi.ch_app.inventory.orders;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Getter;

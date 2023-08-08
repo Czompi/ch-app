@@ -1,5 +1,6 @@
-package hu.czompi.ch_app.inventory;
+package hu.czompi.ch_app.inventory.orders;
 
+import hu.czompi.ch_app.inventory.StoredManager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class OrderManager implements Manager<OrderImpl>{
+public class OrderManager implements StoredManager<OrderImpl> {
     private final Path fileName = Path.of("orders.json");
     private final String defaultConfig = "[]";
     @Setter private List<OrderImpl> items = new ArrayList<>();

@@ -1,19 +1,14 @@
 package hu.czompi.ch_app;
 
 import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
-import hu.czompi.ch_app.inventory.OrderManager;
-import hu.czompi.ch_app.inventory.Product;
-import hu.czompi.ch_app.inventory.ProductImpl;
-import hu.czompi.ch_app.inventory.ProductManager;
+import hu.czompi.ch_app.inventory.orders.OrderManager;
+import hu.czompi.ch_app.inventory.products.Product;
+import hu.czompi.ch_app.inventory.products.ProductManager;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.Map;
-import java.util.logging.Logger;
 
 
 @Log4j2

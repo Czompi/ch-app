@@ -1,6 +1,7 @@
-package hu.czompi.ch_app.inventory;
+package hu.czompi.ch_app.inventory.products;
 
 import com.google.gson.Gson;
+import hu.czompi.ch_app.inventory.StoredManager;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Getter
-public class ProductManager implements Manager<ProductImpl> {
+public class ProductManager implements StoredManager<ProductImpl> {
     private final Path fileName = Path.of("products.json");
     private final String defaultConfig = new Gson().toJson(Arrays.asList(
             new ProductImpl("A", 55),

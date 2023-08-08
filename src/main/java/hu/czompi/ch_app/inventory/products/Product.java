@@ -1,4 +1,4 @@
-package hu.czompi.ch_app.inventory;
+package hu.czompi.ch_app.inventory.products;
 
 public interface Product {
 
