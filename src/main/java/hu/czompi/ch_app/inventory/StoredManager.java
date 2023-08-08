@@ -23,8 +23,6 @@ public interface StoredManager<T> extends Manager<T> {
             Files.writeString(getFileName(), getDefaultConfig(), StandardOpenOption.CREATE);
         } else if(!getItems().isEmpty()) {
             Files.writeString(getFileName(), new Gson().toJson(getItems()), StandardOpenOption.WRITE);
-        } else {
-            //throw new IOException("Unknown state");
         }
     }
 

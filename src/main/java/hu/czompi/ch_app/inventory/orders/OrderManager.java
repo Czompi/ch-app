@@ -1,7 +1,6 @@
 package hu.czompi.ch_app.inventory.orders;
 
 import hu.czompi.ch_app.inventory.StoredManager;
-import hu.czompi.ch_app.inventory.products.ProductImpl;
 import lombok.Getter;
 import lombok.Setter;
 
