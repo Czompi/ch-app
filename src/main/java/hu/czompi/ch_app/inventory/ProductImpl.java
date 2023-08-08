@@ -1,13 +1,17 @@
 package hu.czompi.ch_app.inventory;
 
+import com.google.gson.annotations.SerializedName;
 import lombok.Getter;
 import lombok.ToString;
 
 @Getter
 @ToString
 public class ProductImpl implements Product {
-    private String name;
-    private int price;
+    @SerializedName("name")
+    private final String name;
+
+    @SerializedName("price")
+    private final int price;
 
     public ProductImpl(String name, int price) {
         this.name = name;
