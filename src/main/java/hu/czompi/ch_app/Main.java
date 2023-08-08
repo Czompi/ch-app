@@ -40,7 +40,7 @@ public class Main {
         }
         var order = new Gson().fromJson(orderJson, String[].class);
         try {
-            orderManager.add(order);
+            int id = orderManager.add(order);
             LOGGER.info("You ordered the following items:");
             for (String o : order) {
                 Product p = productManager.get(o);

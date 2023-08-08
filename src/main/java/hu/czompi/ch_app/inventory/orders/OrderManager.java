@@ -1,6 +1,7 @@
 package hu.czompi.ch_app.inventory.orders;
 
 import hu.czompi.ch_app.inventory.StoredManager;
+import hu.czompi.ch_app.inventory.products.ProductImpl;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,5 +22,10 @@ public class OrderManager implements StoredManager<OrderImpl> {
         int index = getItems().size();
         add(index, order);
         return index;
+    }
+
+    @Override
+    public Class<OrderImpl[]> getItemClass() {
+        return OrderImpl[].class;
     }
 }

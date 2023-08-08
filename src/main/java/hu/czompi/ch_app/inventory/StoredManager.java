@@ -7,15 +7,15 @@ import java.nio.file.Files;
 import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
+import java.util.List;
 
-public interface StoredManager<T extends Object> extends Manager<T> {
+public interface StoredManager<T> extends Manager<T> {
     Path getFileName();
     String getDefaultConfig();
 
     default void load() throws IOException {
         var itemsJson = Files.readString(getFileName());
-        setItems(new Gson().fromJson(itemsJson, T[].class));
+        setItems(List.of(new Gson().fromJson(itemsJson, getItemClass())));
     }
 
     default void save() throws IOException {

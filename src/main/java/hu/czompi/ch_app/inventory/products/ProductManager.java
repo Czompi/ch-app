@@ -25,6 +25,11 @@ public class ProductManager implements StoredManager<ProductImpl> {
     public ProductManager() {
     }
 
+    @Override
+    public Class<ProductImpl[]> getItemClass() {
+        return ProductImpl[].class;
+    }
+
     public Product get(String name) {
 //        for (var p: items) {
 //            if(p.getName().equalsIgnoreCase(name))
