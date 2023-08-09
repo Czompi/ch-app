@@ -45,14 +45,21 @@ public class Main {
             }
         }
         var order = new Gson().fromJson(orderJson, String[].class);
+        for (int i = 0; i < order.length; i++) {
+            order[i] = order[i].toUpperCase();
+        }
         List<Product> currentOrder = new ArrayList<>();
         try {
             int id = orderManager.add(order);
             LOGGER.info("Your order (#" + id + ") contains the following products:");
             for (String o : order) {
                 var p = productManager.get(o);
+                if(p == null) {
+                    LOGGER.warn("Unknown product '" + o + "'.");
+                    continue;
+                }
                 currentOrder.add(p);
-                LOGGER.info("  " + p.toString());
+                LOGGER.info("  " + p);
             }
         } catch (Exception ex) {
             LOGGER.error(ex);

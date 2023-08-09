@@ -40,7 +40,11 @@ public class RuleTwoPlusOne extends Rule {
         List<Product> productList = new ArrayList<>();
 
         for (var group : groups.entrySet()) {
-            if (group.getValue() >= MIN_BULK_COUNT) productList.add(productManager.get(group.getKey()));
+            if (group.getValue() >= MIN_BULK_COUNT) {
+                var prod = productManager.get(group.getKey());
+                if (prod == null) continue;
+                productList.add(prod);
+            }
         }
 
         return productList;
