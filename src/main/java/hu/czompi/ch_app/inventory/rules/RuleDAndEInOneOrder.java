@@ -14,6 +14,7 @@ public class RuleDAndEInOneOrder extends Rule {
      * It is used for determining if any {@link #priceChange()} applies.
      */
     private static final int MIN_MATCH_COUNT = 2;
+
     /**
      * It is used for calculating price hike when <b>D</b> and <b>E</b> are in the same order.
      * @param productManager Single {@link ProductManager} instance
