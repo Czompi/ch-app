@@ -37,6 +37,12 @@ public class Main {
         } else {
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
+            LOGGER.info("No arguments found.");
+            LOGGER.info("Items available to order:");
+            for (Product product : productManager.getItems()) {
+                LOGGER.info(" - " + product.getName() + ":  $ " + product.getPrice() + "");
+            }
+
             // Reading data using readLine
             try {
                 LOGGER.info("Input (JSON array required): ");
