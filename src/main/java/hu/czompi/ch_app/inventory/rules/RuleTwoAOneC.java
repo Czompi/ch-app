@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * It is used for calculating savings when there are at least {@value MIN_A_COUNT}x <b>A</b> and one <b>C</b> products in the basket.
  */
-public class TwoAOneCRule extends Rule {
+public class RuleTwoAOneC extends Rule {
     /**
      * Represents the minimum amount of <b>A</b> product type.
      */
@@ -26,7 +26,7 @@ public class TwoAOneCRule extends Rule {
      * @param productManager Single {@link ProductManager} instance
      * @param basket List of products from the current basket.
      */
-    public TwoAOneCRule(ProductManager productManager, String[] basket) {
+    public RuleTwoAOneC(ProductManager productManager, String[] basket) {
         super(productManager, basket);
     }
 
@@ -51,7 +51,8 @@ public class TwoAOneCRule extends Rule {
      * @return Saved amount.
      */
     @Override
-    public int priceChange() {
-        return (matched().size() >= MIN_MATCH_COUNT) ? -1 * (productManager.get("C").getPrice() / 2) : 0;
+    public double priceChange() {
+        var matches = matched();
+        return (matches != null && matches.size() >= MIN_MATCH_COUNT) ? -1 * (productManager.get("C").getPrice() / 2) : 0;
     }
 }

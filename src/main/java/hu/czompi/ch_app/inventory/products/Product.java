@@ -14,5 +14,5 @@ public abstract class Product {
      * Product cost
      * @return Price of the product
      */
-    public abstract int getPrice();
+    public abstract double getPrice();
 }

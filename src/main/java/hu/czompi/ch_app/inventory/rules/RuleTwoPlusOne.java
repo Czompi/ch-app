@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 /**
  * It is used for calculating savings when there are at least {@value MIN_BULK_COUNT} pcs of a single product in the basket.
  */
-public class TwoPlusOneRule extends Rule {
+public class RuleTwoPlusOne extends Rule {
     /**
      * Represents the minimum amount of products for a bulk discount.
      */
@@ -26,7 +26,7 @@ public class TwoPlusOneRule extends Rule {
      * @param productManager Single {@link ProductManager} instance
      * @param basket List of products from the current basket.
      */
-    public TwoPlusOneRule(ProductManager productManager, String[] basket) {
+    public RuleTwoPlusOne(ProductManager productManager, String[] basket) {
         super(productManager, basket);
         this.groups = this.basket.stream().collect(Collectors.groupingBy(productId -> productId, Collectors.counting()));
     }
@@ -47,9 +47,9 @@ public class TwoPlusOneRule extends Rule {
     }
 
     @Override
-    public int priceChange() {
+    public double priceChange() {
         var discountedProducts = matched();
-        int savings = 0;
+        double savings = 0;
 
         for (var product : discountedProducts) {
             savings -= product.getPrice();

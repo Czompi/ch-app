@@ -48,5 +48,5 @@ public abstract class Rule {
      * By default, it's a negative (that indicated saved amount) value, but when positive, it costs more.
      * @return Price change amount.
      */
-    public abstract int priceChange();
+    public abstract double priceChange();
 }

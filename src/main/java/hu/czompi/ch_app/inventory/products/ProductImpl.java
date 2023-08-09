@@ -14,14 +14,14 @@ public class ProductImpl extends Product {
     private final String name;
 
     @SerializedName("price")
-    private final int price;
+    private final double price;
 
     /**
      * Create new product
      * @param name Product name
      * @param price Product price
      */
-    public ProductImpl(String name, int price) {
+    public ProductImpl(String name, double price) {
         this.name = name;
         this.price = price;
     }
