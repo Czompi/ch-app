@@ -1,8 +1,8 @@
 package hu.czompi.ch_app.inventory.products;
 
-public interface Product {
+public abstract class Product {
 
-    String getName();
+    public abstract String getName();
 
-    int getPrice();
+    public abstract int getPrice();
 }

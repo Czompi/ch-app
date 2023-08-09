@@ -11,7 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @Getter
-public class ProductManager implements StoredManager<ProductImpl> {
+public class ProductManager implements StoredManager<Product> {
     private final Path fileName = Path.of("products.json");
     private final String defaultConfig = new Gson().toJson(Arrays.asList(
             new ProductImpl("A", 55),
@@ -20,14 +20,14 @@ public class ProductManager implements StoredManager<ProductImpl> {
             new ProductImpl("D", 10),
             new ProductImpl("E", 45)
     ));
-    @Setter private List<ProductImpl> items = new ArrayList<>();
+    @Setter private List<Product> items = new ArrayList<>();
 
     public ProductManager() {
     }
 
     @Override
-    public Class<ProductImpl[]> getItemClass() {
-        return ProductImpl[].class;
+    public Class<Product[]> getItemClass() {
+        return Product[].class;
     }
 
     public Product get(String name) {

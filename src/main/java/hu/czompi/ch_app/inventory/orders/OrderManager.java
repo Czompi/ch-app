@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Getter
-public class OrderManager implements StoredManager<OrderImpl> {
+public class OrderManager implements StoredManager<Order> {
     private final Path fileName = Path.of("orders.json");
     private final String defaultConfig = "[]";
-    @Setter private List<OrderImpl> items = new ArrayList<>();
+    @Setter private List<Order> items = new ArrayList<>();
 
     public void add(Integer id, String[] order) {
         add(new OrderImpl(id, order));
@@ -24,7 +24,7 @@ public class OrderManager implements StoredManager<OrderImpl> {
     }
 
     @Override
-    public Class<OrderImpl[]> getItemClass() {
-        return OrderImpl[].class;
+    public Class<Order[]> getItemClass() {
+        return Order[].class;
     }
 }

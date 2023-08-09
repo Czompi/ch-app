@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public class OrderImpl implements Order {
+public class OrderImpl extends Order {
 
     @SerializedName("orderNumber")
     private final int orderNumber;

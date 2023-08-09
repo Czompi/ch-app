@@ -6,7 +6,7 @@ import lombok.ToString;
 
 @Getter
 @ToString
-public class ProductImpl implements Product {
+public class ProductImpl extends Product {
     @SerializedName("name")
     private final String name;
 

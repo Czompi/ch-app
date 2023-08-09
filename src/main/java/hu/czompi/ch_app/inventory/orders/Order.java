@@ -1,6 +1,6 @@
 package hu.czompi.ch_app.inventory.orders;
 
-public interface Order {
-    int getOrderNumber();
-    String[] getBasket();
+public abstract class Order {
+    public abstract int getOrderNumber();
+    public abstract String[] getBasket();
 }
