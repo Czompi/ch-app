@@ -20,6 +20,8 @@ import java.util.List;
 @Log4j2
 public class Main {
     public static void main(String[] args) {
+        LOGGER.info("Starting " + Main.class.getPackage().getSpecificationTitle() + ", version " + Main.class.getPackage().getImplementationVersion());
+
         // Loading configurations
         ProductManager productManager = new ProductManager();
         OrderManager orderManager = new OrderManager();

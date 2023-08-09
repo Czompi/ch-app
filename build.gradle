@@ -3,7 +3,7 @@ plugins {
 }
 
 group = 'hu.czompi'
-version = '1.0'
+version = '1.0.1'
 
 repositories {
     mavenCentral()
@@ -20,7 +20,17 @@ dependencies {
 
 jar {
     manifest {
-        attributes 'Main-Class': 'hu.czompi.ch_app.Main'
+        attributes([
+                'Main-Class'              : 'hu.czompi.ch_app.Main',
+                "Specification-Title"     : "ch-app",
+                "Specification-Vendor"    : "Czompi",
+                "Specification-Version"   : "1",
+                "Implementation-Title"    : "CH APP",
+                "Implementation-Version"  : version,
+                "Implementation-Vendor"   : "Czompi",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "Automatic-Module-Name"   : "hu.czompi.ch_app"
+        ])
     }
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from {
