@@ -9,6 +9,8 @@ import lombok.extern.log4j.Log4j2;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Log4j2
@@ -39,11 +41,13 @@ public class Main {
             }
         }
         var order = new Gson().fromJson(orderJson, String[].class);
+        List<Product> currentOrder = new ArrayList<>();
         try {
             int id = orderManager.add(order);
-            LOGGER.info("You ordered the following items:");
+            LOGGER.info("You ordered the following products:");
             for (String o : order) {
-                Product p = productManager.get(o);
+                var p = productManager.get(o);
+                currentOrder.add(p);
                 LOGGER.info("  " + p.toString());
             }
         } catch (Exception ex) {
