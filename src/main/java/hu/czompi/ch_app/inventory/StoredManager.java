@@ -1,6 +1,8 @@
 package hu.czompi.ch_app.inventory;
 
 import com.google.gson.Gson;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -31,4 +33,14 @@ public interface StoredManager<T> extends Manager<T> {
         load();
     }
 
+    @Override
+    default void add(T item) {
+        Manager.super.add(item);
+        try {
+            reload();
+        } catch (IOException e) {
+            Logger logger = LogManager.getLogger(this);
+            logger.error(e);
+        }
+    }
 }
