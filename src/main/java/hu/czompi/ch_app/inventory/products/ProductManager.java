@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Product manager
+ */
 @Getter
 public class ProductManager implements StoredManager<Product> {
     private final Path fileName = Path.of("products.json");
@@ -22,15 +25,17 @@ public class ProductManager implements StoredManager<Product> {
     ));
     @Setter private List<Product> items = new ArrayList<>();
 
-    public ProductManager() {
-    }
-
     @Override
     public Class<ProductImpl[]> getItemClass() {
         return ProductImpl[].class;
     }
 
-    public Product get(String name) {
-        return getItems().stream().filter(item -> item.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
+    /**
+     * Get a specific product by productId
+     * @param productId Name of the product
+     * @return Product based on {code productId}
+     */
+    public Product get(String productId) {
+        return getItems().stream().filter(item -> item.getName().equalsIgnoreCase(productId)).findFirst().orElse(null);
     }
 }

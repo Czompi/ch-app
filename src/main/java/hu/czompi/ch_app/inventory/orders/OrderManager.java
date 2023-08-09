@@ -8,18 +8,32 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Order manager
+ */
 @Getter
 public class OrderManager implements StoredManager<Order> {
     private final Path fileName = Path.of("orders.json");
     private final String defaultConfig = "[]";
     @Setter private List<Order> items = new ArrayList<>();
 
-    public void add(Integer id, String[] order) {
-        add(new OrderImpl(id, order));
+    /**
+     * Add order to orders list and save it to disk.
+     * @param id Order id
+     * @param basket Items in the basket
+     */
+    public void add(Integer id, String[] basket) {
+        add(new OrderImpl(id, basket));
     }
-    public int add(String[] order) {
+
+    /**
+     * Add order to orders list and save it to disk.
+     * @return Returns with order id.
+     * @param basket Items in the basket
+     */
+    public int add(String[] basket) {
         int index = getItems().size();
-        add(index, order);
+        add(index, basket);
         return index;
     }
 
