@@ -44,7 +44,7 @@ public class Main {
         List<Product> currentOrder = new ArrayList<>();
         try {
             int id = orderManager.add(order);
-            LOGGER.info("You ordered the following products:");
+            LOGGER.info("Your order (#" + id + ") contains the following products:");
             for (String o : order) {
                 var p = productManager.get(o);
                 currentOrder.add(p);
