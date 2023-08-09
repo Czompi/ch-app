@@ -34,7 +34,7 @@ gradlew assemble
 ### No arguments
 You can run the application without any arguments
 ```shell
-java -jar ch-app-1.0.jar
+java -jar ch-app-<version>.jar
 ```
 
 ### Json arguments
@@ -42,5 +42,5 @@ This application handles all the arguments as part of a json string, and it'll t
 It will return the total cost of the items ordered in the arguments
 #### Example
 ```shell
-java -jar ch-app-1.0.jar ["A", "B", "C"]
+java -jar ch-app-<version>.jar ["A", "B", "C"]
 ```
