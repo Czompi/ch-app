@@ -4,6 +4,9 @@ import com.google.gson.*;
 import hu.czompi.ch_app.inventory.orders.OrderManager;
 import hu.czompi.ch_app.inventory.products.Product;
 import hu.czompi.ch_app.inventory.products.ProductManager;
+import hu.czompi.ch_app.inventory.rules.RuleManager;
+import hu.czompi.ch_app.inventory.rules.TwoAOneCRule;
+import hu.czompi.ch_app.inventory.rules.TwoPlusOneRule;
 import lombok.extern.log4j.Log4j2;
 
 import java.io.BufferedReader;
@@ -19,6 +22,7 @@ public class Main {
         // Loading configurations
         ProductManager productManager = new ProductManager();
         OrderManager orderManager = new OrderManager();
+        RuleManager ruleManager = new RuleManager();
         try {
             productManager.reload();
             orderManager.reload();
@@ -53,5 +57,20 @@ public class Main {
         } catch (Exception ex) {
             LOGGER.error(ex);
         }
+
+        int savings = 0, sum = 0;
+        for (int i = 0; i < currentOrder.size(); i++) {
+            sum += currentOrder.get(i).getPrice();
+        }
+
+        ruleManager.add(new TwoAOneCRule(productManager, order));
+        ruleManager.add(new TwoPlusOneRule(productManager, order));
+        var rules = ruleManager.getItems();
+        for (int i = 0; i < rules.size(); i++) {
+            savings += rules.get(i).priceChange();
+        }
+        LOGGER.info("Raw total: $ " + sum);
+        LOGGER.info("Saved: $ " + Math.abs(savings));
+        LOGGER.info("Total: $ " + Math.addExact(sum, savings));
     }
 }
