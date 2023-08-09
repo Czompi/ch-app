@@ -31,6 +31,6 @@ public class ProductManager implements StoredManager<ProductImpl> {
     }
 
     public Product get(String name) {
-        return getItems().stream().filter(x -> x.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
+        return getItems().stream().filter(item -> item.getName().equalsIgnoreCase(name)).findFirst().orElse(null);
     }
 }
