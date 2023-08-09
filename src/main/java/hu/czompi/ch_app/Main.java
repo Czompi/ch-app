@@ -4,6 +4,7 @@ import com.google.gson.*;
 import hu.czompi.ch_app.inventory.orders.OrderManager;
 import hu.czompi.ch_app.inventory.products.Product;
 import hu.czompi.ch_app.inventory.products.ProductManager;
+import hu.czompi.ch_app.inventory.rules.RuleDAndEInOneOrder;
 import hu.czompi.ch_app.inventory.rules.RuleManager;
 import hu.czompi.ch_app.inventory.rules.RuleTwoAOneC;
 import hu.czompi.ch_app.inventory.rules.RuleTwoPlusOne;
@@ -72,12 +73,14 @@ public class Main {
 
         ruleManager.add(new RuleTwoAOneC(productManager, order));
         ruleManager.add(new RuleTwoPlusOne(productManager, order));
+        ruleManager.add(new RuleDAndEInOneOrder(productManager, order));
         var rules = ruleManager.getItems();
         for (int i = 0; i < rules.size(); i++) {
             savings += rules.get(i).priceChange();
         }
         LOGGER.info("Raw total: $ " + sum);
-        LOGGER.info("Saved: $ " + Math.abs(savings));
+        if(savings < 0) LOGGER.info("Saved: $ " + Math.abs(savings));
+        else if(savings > 0) LOGGER.info("Extra fee: $ " + savings);
         LOGGER.info("Total: $ " + (sum + savings));
     }
 }
