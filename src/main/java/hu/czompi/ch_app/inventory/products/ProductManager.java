@@ -26,8 +26,8 @@ public class ProductManager implements StoredManager<Product> {
     }
 
     @Override
-    public Class<Product[]> getItemClass() {
-        return Product[].class;
+    public Class<ProductImpl[]> getItemClass() {
+        return ProductImpl[].class;
     }
 
     public Product get(String name) {

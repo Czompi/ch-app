@@ -5,7 +5,7 @@ import java.util.List;
 public interface Manager<T> {
     List<T> getItems();
     void setItems(List<T> newItems);
-    Class<T[]> getItemClass();
+    <TImpl extends T> Class<TImpl[]> getItemClass();
 
     default void add(T item) {
         var items = new java.util.ArrayList<>(getItems());

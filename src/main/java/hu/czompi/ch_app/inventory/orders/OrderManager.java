@@ -24,7 +24,7 @@ public class OrderManager implements StoredManager<Order> {
     }
 
     @Override
-    public Class<Order[]> getItemClass() {
-        return Order[].class;
+    public Class<OrderImpl[]> getItemClass() {
+        return OrderImpl[].class;
     }
 }
